@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خطوبة خالد & هيام</title>
+    <!-- خطوط عربية فاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-burgundy: #4a0e17;
+            --dark-burgundy: #28050a;
+            --light-burgundy: #721926;
+            --accent-gold: #d4af37;
+            --light-gold: #f3e5ab;
+            --text-light: #fdfbf7;
+            --card-bg: rgba(74, 14, 23, 0.75);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--dark-burgundy), var(--primary-burgundy), #1a0306);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* خلفية القلوب المتحركة */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(212, 175, 55, 0.25);
+            font-size: 1.5rem;
+            animation: floatUp 8s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(105vh) scale(0.6) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.4) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* حاوية الموقع الرئيسية */
+        .container {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* زر الموسيقى الرومانسية */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-gold);
+            color: var(--dark-burgundy);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* الهيدر والعنوان */
+        header {
+            padding: 50px 0 30px;
+            animation: fadeInDown 1.5s ease;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        h1 {
+            font-family: 'Amiri', serif;
+            font-size: 3.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--light-gold);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* بطاقات العبارات والاقتباسات */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .quote-text {
+            font-family: 'Amiri', serif;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .quote-author {
+            font-size: 1rem;
+            color: var(--accent-gold);
+            font-style: italic;
+        }
+
+        /* تفاصيل الموعد والمكان */
+        .event-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .detail-box {
+            background: rgba(40, 5, 10, 0.8);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .detail-box i {
+            font-size: 2rem;
+            color: var(--accent-gold);
+            margin-bottom: 10px;
+        }
+
+        .detail-box h3 {
+            font-size: 1.1rem;
+            color: var(--light-gold);
+            margin-bottom: 5px;
+        }
+
+        .detail-box p {
+            font-size: 1rem;
+        }
+
+        /* المؤقت التنازلي */
+        .countdown-container {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--accent-gold);
+            padding: 25px;
+            margin: 35px 0;
+        }
+
+        .countdown-title {
+            font-family: 'Amiri', serif;
+            font-size: 1.4rem;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+        }
+
+        .countdown-grid {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            border-radius: 10px;
+            padding: 10px 15px;
+            min-width: 75px;
+        }
+
+        .time-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+        }
+
+        .time-label {
+            font-size: 0.85rem;
+            color: var(--light-gold);
+        }
+
+        /* قسم ظهور العريس عند التمرير */
+        .groom-section {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+            margin: 50px 0;
+        }
+
+        .groom-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .groom-card {
+            background: linear-gradient(145deg, #5b131f, #3b0911);
+            border: 2px solid var(--accent-gold);
+            border-radius: 25px;
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+            text-align: right;
+        }
+
+        .groom-avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-gold);
+            background: #28050a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--accent-gold);
+            margin: 0 auto;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .groom-info h3 {
+            font-family: 'Amiri', serif;
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+        }
+
+        .groom-info p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-light);
+        }
+
+        /* بوكس إرسال الرسائل الفوري */
+        .message-box-container {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-gold);
+            border-radius: 20px;
+            padding: 35px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .message-box-container h2 {
+            font-family: 'Amiri', serif;
+            color: var(--accent-gold);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--light-gold);
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 10px;
+            color: #fff;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--accent-gold), #b89728);
+            color: var(--dark-burgundy);
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+        }
+
+        /* رسالة التأكيد المنبثقة */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--accent-gold);
+            color: var(--dark-burgundy);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            transition: 0.4s ease;
+            z-index: 1000;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        footer {
+            margin: 40px 0 20px;
+            font-size: 0.95rem;
+            color: var(--light-gold);
+            font-family: 'Amiri', serif;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .groom-card { text-align: center; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- زر تشغيل الموسيقى الرومانسية -->
+    <button class="music-btn" id="musicToggle" title="تشغيل نغمة رومانسية">
+        <i class="fa-solid fa-music"></i>
+    </button>
+
+    <!-- خلفية القلوب المتحركة -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <div class="bismillah">بسم الله الرحمن الرحيم</div>
+            <h1>خالد & هيام</h1>
+            <p class="subtitle">نعلن بكل وُد فرحتنا واجتماع قلبينا على بركة الله</p>
+        </header>
+
+        <!-- العبارات -->
+        <div class="card">
+            <p class="quote-text">"رزقني الله بك، وأيقنت أنك أجمل أرزاقي.. دمت لي كل العمر"</p>
+            <span class="quote-author">✨ من القلب إلى القلب ✨</span>
+        </div>
+
+        <div class="card">
+            <p class="quote-text">"اهلا بك شريكاً للعمر و حبيباً للقلب و رفيقاً للدرب .."</p>
+            <span class="quote-author">✨ بداية حكاية أبدية ✨</span>
+        </div>
+
+        <!-- تفاصيل الموعد والمكان -->
+        <div class="event-details">
+            <div class="detail-box">
+                <i class="fa-regular fa-calendar-days"></i>
+                <h3>التاريخ</h3>
+                <p>28 / 10 / 2026</p>
+            </div>
+            <div class="detail-box">
+                <i class="fa-regular fa-clock"></i>
+                <h3>الساعة</h3>
+                <p>8:00 مساءً</p>
+            </div>
+            <div class="detail-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <h3>الموقع</h3>
+                <p>دمشق - الدخانية<br>جانب جامع عدي</p>
+            </div>
+        </div>
+
+        <!-- المؤقت التنازلي -->
+        <div class="countdown-container">
+            <div class="countdown-title">باقٍ على موعد لقاء العمر:</div>
+            <div class="countdown-grid">
+                <div class="time-box">
+                    <div class="time-number" id="days">00</div>
+                    <div class="time-label">يوم</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="hours">00</div>
+                    <div class="time-label">ساعة</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="minutes">00</div>
+                    <div class="time-label">دقيقة</div>
+                </div>
+                <div class="time-box">
+                    <div class="time-number" id="seconds">00</div>
+                    <div class="time-label">ثانية</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- اقتباس إضافي -->
+        <div class="card">
+            <p class="quote-text">"ولو سألوني عنك لقلت: هي الأمنية التي استجابت لها كل دعواتي، والنور الذي أضاء عتمة أيامي."</p>
+            <span class="quote-author">🤍</span>
+        </div>
+
+        <!-- قسم العريس -->
+        <div class="groom-section" id="groomSection">
+            <div class="groom-card">
+                <div class="groom-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+                <div class="groom-info" style="flex: 1;">
+                    <h3>كلمة من القلب </h3>
+                    <p>أهلاً بكم جميعاً. بكل السعادة والفخر، أخطو اليوم خطوتِي المباركة نحو مستقبل يجمعني بتوأم روحي "هيام". تشريفكم وحضوركم يزّين ليلتنا ويزيد فرحتنا أضعافاً.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- بوكس إرسال التهنئة المباشر -->
+        <div class="message-box-container">
+            <h2>اكتب رسالة تهنئة لـ خالد وهـيام</h2>
+            <p style="color: var(--light-gold); margin-bottom: 25px; font-size: 0.95rem;">ستصل رسالتك مباشرة وفورياً إلى بريد العريس الإلكتروني</p>
+            
+            <form id="wishForm" onsubmit="sendWish(event)">
+                <div class="form-group">
+                    <label for="senderName"><i class="fa-solid fa-user"></i> اسمك الكريم</label>
+                    <input type="text" id="senderName" class="form-control" placeholder="أدخل اسمك هنا..." required>
+                </div>
+                <div class="form-group">
+                    <label for="senderMessage"><i class="fa-solid fa-pen-nib"></i> رسالتك أو مباركتك</label>
+                    <textarea id="senderMessage" class="form-control" placeholder="اكتب عبارات التهنئة والود..." required></textarea>
+                </div>
+                <button type="submit" class="send-btn">
+                    <i class="fa-solid fa-paper-plane"></i> إرسال التهنئة
+                </button>
+            </form>
+        </div>
+
+        <!-- الفوتر -->
+        <footer>
+            <p>دمتم أوفياء لمحبتنا • خطوبة مباركة إن شاء الله</p>
+        </footer>
+    </div>
+
+    <!-- رسالة التأكيد -->
+    <div class="toast" id="toast">تم إرسال رسالتك الرومانسية بنجاح إلى خالد وهيام! 💌</div>
+
+    <script>
+        /* 1. توليد القلوب المتحركة في الخلفية */
+        const heartsContainer = document.getElementById('heartsContainer');
+        const heartSymbols = ['❤️', '💖', '✨', '🤍', '🤎'];
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            heart.style.fontSize = (Math.random() * 1 + 1) + 'rem';
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 8000);
+        }
+        setInterval(createHeart, 500);
+
+        /* 2. المؤقت التنازلي حتى 2026/10/28 الساعة 20:00 (8 مساءً) */
+        const eventDate = new Date('October 28, 2026 20:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').innerText = '00';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        /* 3. ظهور قسم العريس عند التمرير */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(document.getElementById('groomSection'));
+
+        /* 4. إرسال الرسالة مباشرة إلى بريدك الإلكتروني عبر Formspree */
+        function sendWish(e) {
+            e.preventDefault();
+            const name = document.getElementById('senderName').value;
+            const message = document.getElementById('senderMessage').value;
+            
+            // ⚠️ استبدل 'YOUR_FORM_ID' بالرابط الذي يمنحك إياه موقع Formspree.io
+            const formspreeUrl = 'https://formspree.io/f/xnppnywq'; 
+
+            const submitBtn = document.querySelector('.send-btn');
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإرسال...';
+            submitBtn.disabled = true;
+
+            fetch(formspreeUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: name,
+                    message: message,
+                    _subject: `💌 تهنئة خطوبة جديدة من ${name} إلى خالد وهيام`
+                })
+            })
+            .then(response => {
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال التهنئة';
+                submitBtn.disabled = false;
+
+                if (response.ok) {
+                    // إظهار تنبيه نجاح الإرسال
+                    const toast = document.getElementById('toast');
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                    }, 4000);
+
+                    document.getElementById('wishForm').reset();
+                } else {
+                    alert('عذراً، حدث خطأ أثناء إرسال الرسالة. يرجى التأكد من ربط الحساب بشكل صحيح.');
+                }
+            })
+            .catch(error => {
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> إرسال التهنئة';
+                submitBtn.disabled = false;
+                alert('حدث خطأ في الاتصال بالشبكة.');
+            });
+        }
+
+        /* 5. نغمة وموسيقى رومانسية باستخدام Web Audio API */
+        let audioCtx = null;
+        let isPlaying = false;
+        let melodyInterval = null;
+
+        function playRomanticMelody() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+
+            const notes = [329.63, 392.00, 440.00, 493.88, 523.25, 587.33, 659.25];
+            let index = 0;
+
+            melodyInterval = setInterval(() => {
+                if (!isPlaying) return;
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(notes[index], audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.5);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                osc.start();
+                osc.stop(audioCtx.currentTime + 2.5);
+
+                index = (index + 1) % notes.length;
+            }, 1200);
+        }
+
+        const musicToggle = document.getElementById('musicToggle');
+        musicToggle.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            if (isPlaying) {
+                musicToggle.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+                musicToggle.style.background = '#f3e5ab';
+                playRomanticMelody();
+            } else {
+                musicToggle.innerHTML = '<i class="fa-solid fa-music"></i>';
+                musicToggle.style.background = 'var(--accent-gold)';
+                if (melodyInterval) clearInterval(melodyInterval);
+            }
+        });
+    </script>
+</body>
+</html>
